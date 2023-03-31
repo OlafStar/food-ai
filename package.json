@@ -9,12 +9,13 @@
         "lint": "next lint"
     },
     "dependencies": {
-        "next": "13.2.4",
-        "react": "18.2.0",
-        "react-dom": "18.2.0",
         "framer-motion": "^8.4.3",
+        "next": "13.2.4",
         "next-i18next": "^13.0.3",
         "next-transpile-modules": "^10.0.0",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "react-hook-form": "^7.43.9",
         "react-use": "^17.4.0",
         "styled-components": "^5.3.6"
     },
