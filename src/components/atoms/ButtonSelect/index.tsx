@@ -1,17 +1,35 @@
-import {useState} from 'react';
+import {RegisterOptions, useFormContext} from 'react-hook-form';
+
+export type SelectValue = {title: string; value: string | number};
 
 type ButtonSelectProps = {
-    values: string[];
+    values: SelectValue[];
+    name: string;
+    registerOptions?: RegisterOptions;
 };
 
-const ButtonSelect = ({values}: ButtonSelectProps) => {
-    const [currentValue, setCurrentValue] = useState<string | undefined>(undefined);
+const ButtonSelect = ({values, name, registerOptions}: ButtonSelectProps) => {
+    const {register, setValue, getValues} = useFormContext();
+    const selectRegister = register(`${name}`, registerOptions);
+
     return (
         <div>
             {values.map((item) => (
-                <button>{item}</button>
+                <button
+                    key={item.title}
+                    onClick={(e) => {
+                        e.preventDefault();
+                        setValue(name, item.value);
+                    }}
+                >
+                    {item.title}
+                </button>
             ))}
-            <select value={currentValue} style={{display: 'none'}}></select>
+            <select
+                {...selectRegister}
+                value={getValues(name)}
+                style={{display: 'none'}}
+            ></select>
         </div>
     );
 };

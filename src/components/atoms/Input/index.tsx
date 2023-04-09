@@ -1,16 +1,19 @@
-import {useFormContext} from 'react-hook-form';
+import {InputHTMLAttributes} from 'react';
+import {RegisterOptions, useFormContext} from 'react-hook-form';
 
-type InputLabel = {
+type InputProps = {
     label: string;
-};
+    name: string;
+    registerOptions?: RegisterOptions;
+} & InputHTMLAttributes<HTMLInputElement>;
 
-const Input = ({label}: InputLabel) => {
+const Input = ({label, name, registerOptions, ...rest}: InputProps) => {
     const {register} = useFormContext();
 
     return (
         <label>
             <span>{label}</span>
-            <input {...register(`${label}`)} />
+            <input {...rest} {...register(`${name}`, registerOptions)} />
         </label>
     );
 };

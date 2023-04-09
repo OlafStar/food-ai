@@ -1,5 +1,6 @@
 import Input from '~components/atoms/Input';
 import Form from '~components/molecules/MainForm';
+import UserInformations from '~components/molecules/UserInformations';
 import {HomepageContainer, LeftColumn, RightColumn} from './styles';
 
 const Homepage = () => {
@@ -7,6 +8,7 @@ const Homepage = () => {
         <HomepageContainer>
             <LeftColumn>
                 <Form />
+                <UserInformations />
             </LeftColumn>
             <RightColumn />
         </HomepageContainer>
